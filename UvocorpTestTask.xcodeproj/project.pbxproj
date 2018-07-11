@@ -7,23 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		074FE9C318444DC6C0C5A1F9 /* Pods_UvocorpTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0DC882DABA99FEAEDD6FF05 /* Pods_UvocorpTestTask.framework */; };
+		C530307D20F6B0FF00731B64 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C530307C20F6B0FF00731B64 /* MainVC.swift */; };
+		C530307F20F6B12600731B64 /* NewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C530307E20F6B12600731B64 /* NewsVC.swift */; };
+		C530308120F6B1A500731B64 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C530308020F6B1A500731B64 /* GradientView.swift */; };
+		C530308320F6BEF000731B64 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C530308220F6BEF000731B64 /* Storage.swift */; };
 		C5D4686020F6355600622202 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D4685F20F6355600622202 /* AppDelegate.swift */; };
-		C5D4686220F6355600622202 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D4686120F6355600622202 /* FirstViewController.swift */; };
-		C5D4686420F6355600622202 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D4686320F6355600622202 /* SecondViewController.swift */; };
 		C5D4686720F6355600622202 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5D4686520F6355600622202 /* Main.storyboard */; };
 		C5D4686920F6355800622202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5D4686820F6355800622202 /* Assets.xcassets */; };
 		C5D4686C20F6355800622202 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5D4686A20F6355800622202 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		138D612707335E8566F3560A /* Pods-UvocorpTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UvocorpTestTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-UvocorpTestTask/Pods-UvocorpTestTask.release.xcconfig"; sourceTree = "<group>"; };
+		4886C5495033EAF45B98E159 /* Pods-UvocorpTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UvocorpTestTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UvocorpTestTask/Pods-UvocorpTestTask.debug.xcconfig"; sourceTree = "<group>"; };
+		C530307C20F6B0FF00731B64 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		C530307E20F6B12600731B64 /* NewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVC.swift; sourceTree = "<group>"; };
+		C530308020F6B1A500731B64 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		C530308220F6BEF000731B64 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		C5D4685C20F6355600622202 /* UvocorpTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UvocorpTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5D4685F20F6355600622202 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C5D4686120F6355600622202 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		C5D4686320F6355600622202 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C5D4686620F6355600622202 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5D4686820F6355800622202 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5D4686B20F6355800622202 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5D4686D20F6355800622202 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0DC882DABA99FEAEDD6FF05 /* Pods_UvocorpTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UvocorpTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +39,97 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074FE9C318444DC6C0C5A1F9 /* Pods_UvocorpTestTask.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D964F67FF4316A31BAEF019 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0DC882DABA99FEAEDD6FF05 /* Pods_UvocorpTestTask.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7175A44A7B2741A0BCA8EFDF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4886C5495033EAF45B98E159 /* Pods-UvocorpTestTask.debug.xcconfig */,
+				138D612707335E8566F3560A /* Pods-UvocorpTestTask.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C530307520F6AFFB00731B64 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C5D4686520F6355600622202 /* Main.storyboard */,
+				C5D4686A20F6355800622202 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C530307620F6B02600731B64 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				C5D4686D20F6355800622202 /* Info.plist */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		C530307720F6B03700731B64 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C5D4686820F6355800622202 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C530307820F6B06900731B64 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C530307920F6B08C00731B64 /* Controllers */,
+				C530307A20F6B09B00731B64 /* Model */,
+				C530307B20F6B0A700731B64 /* CustomUI */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C530307920F6B08C00731B64 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C530307C20F6B0FF00731B64 /* MainVC.swift */,
+				C530307E20F6B12600731B64 /* NewsVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C530307A20F6B09B00731B64 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C530308220F6BEF000731B64 /* Storage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C530307B20F6B0A700731B64 /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				C530308020F6B1A500731B64 /* GradientView.swift */,
+			);
+			path = CustomUI;
+			sourceTree = "<group>";
+		};
 		C5D4685320F6355600622202 = {
 			isa = PBXGroup;
 			children = (
 				C5D4685E20F6355600622202 /* UvocorpTestTask */,
 				C5D4685D20F6355600622202 /* Products */,
+				7175A44A7B2741A0BCA8EFDF /* Pods */,
+				2D964F67FF4316A31BAEF019 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,12 +145,10 @@
 			isa = PBXGroup;
 			children = (
 				C5D4685F20F6355600622202 /* AppDelegate.swift */,
-				C5D4686120F6355600622202 /* FirstViewController.swift */,
-				C5D4686320F6355600622202 /* SecondViewController.swift */,
-				C5D4686520F6355600622202 /* Main.storyboard */,
-				C5D4686820F6355800622202 /* Assets.xcassets */,
-				C5D4686A20F6355800622202 /* LaunchScreen.storyboard */,
-				C5D4686D20F6355800622202 /* Info.plist */,
+				C530307820F6B06900731B64 /* Classes */,
+				C530307520F6AFFB00731B64 /* Storyboards */,
+				C530307720F6B03700731B64 /* Resources */,
+				C530307620F6B02600731B64 /* Configs */,
 			);
 			path = UvocorpTestTask;
 			sourceTree = "<group>";
@@ -74,9 +160,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5D4687020F6355800622202 /* Build configuration list for PBXNativeTarget "UvocorpTestTask" */;
 			buildPhases = (
+				C766D896B6F10742DCBCB9B9 /* [CP] Check Pods Manifest.lock */,
 				C5D4685820F6355600622202 /* Sources */,
 				C5D4685920F6355600622202 /* Frameworks */,
 				C5D4685A20F6355600622202 /* Resources */,
+				FD37F4F0156BE15508F6F7A4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,14 +221,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C766D896B6F10742DCBCB9B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UvocorpTestTask-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD37F4F0156BE15508F6F7A4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-UvocorpTestTask/Pods-UvocorpTestTask-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UvocorpTestTask/Pods-UvocorpTestTask-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C5D4685820F6355600622202 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5D4686420F6355600622202 /* SecondViewController.swift in Sources */,
+				C530307D20F6B0FF00731B64 /* MainVC.swift in Sources */,
 				C5D4686020F6355600622202 /* AppDelegate.swift in Sources */,
-				C5D4686220F6355600622202 /* FirstViewController.swift in Sources */,
+				C530308120F6B1A500731B64 /* GradientView.swift in Sources */,
+				C530307F20F6B12600731B64 /* NewsVC.swift in Sources */,
+				C530308320F6BEF000731B64 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,11 +411,12 @@
 		};
 		C5D4687120F6355800622202 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4886C5495033EAF45B98E159 /* Pods-UvocorpTestTask.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9VM57AG273;
-				INFOPLIST_FILE = UvocorpTestTask/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/UvocorpTestTask/Configs/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,11 +430,12 @@
 		};
 		C5D4687220F6355800622202 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 138D612707335E8566F3560A /* Pods-UvocorpTestTask.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9VM57AG273;
-				INFOPLIST_FILE = UvocorpTestTask/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/UvocorpTestTask/Configs/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
