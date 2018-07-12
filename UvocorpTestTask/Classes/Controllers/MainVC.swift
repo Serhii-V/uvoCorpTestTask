@@ -19,21 +19,22 @@ class MainVC: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !Storage.isNewsPresent() {
-            guard let title = Storage.getNews() as? String else { return }
-                recentlyReaded.text =  title
-        }
+        checkForNewsTitle()
     }
 
     func runTimer() {
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateDate), userInfo: nil, repeats: true)
     }
 
+    func checkForNewsTitle() {
+        if !Storage.isNewsTitlePresent() {
+            guard let title = Storage.getNewsTitle() as? String else { return }
+            recentlyReaded.text =  title
+        }
+    }
+
     @objc func updateDate() {
         let newDate = DateFormatter.localizedString(from: Date(), dateStyle: DateFormatter.Style.medium, timeStyle: DateFormatter.Style.medium)
         dateLabel.text = newDate
     }
-
-
-
 }

@@ -10,19 +10,30 @@ import Foundation
 
 class Storage {
     static let `default` = Storage()
-    private let newsKey = "savedNews"
 
-    private init() {}
-
-    static func addNewsToStorage(news: String) {
-       UserDefaults.standard.set(news, forKey: "savedNews")
+    static func addNewsTitle(news: String) {
+       UserDefaults.standard.set(news, forKey: "newsTitle")
     }
 
-    static func getNews() -> Any? {
-            return UserDefaults.standard.object(forKey: "savedNews")
+    static func addNewsLink(news: String) {
+        UserDefaults.standard.set(news, forKey: "newsLink")
     }
 
-    static func isNewsPresent() -> Bool {
-        return UserDefaults.standard.object(forKey: "savedNews") == nil
+    static func getNewsTitle() -> Any? {
+            return UserDefaults.standard.object(forKey: "newsTitle")
     }
+
+    static func getNewsLink() -> Any? {
+        return UserDefaults.standard.object(forKey: "newsLink")
+    }
+
+    static func isNewsTitlePresent() -> Bool {
+        return UserDefaults.standard.object(forKey: "newsTitle") == nil
+    }
+
+    static func isNewsLinkPresent() -> Bool {
+        return UserDefaults.standard.object(forKey: "newsLink") == nil
+    }
+
+
 }
