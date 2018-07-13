@@ -16,7 +16,9 @@ class FullNewsVC: UIViewController {
         super.viewDidLoad()
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         guard let text = Storage.getNewsTitle() as? String else { return }
+        guard let description = Storage.getNewsDescription() as? String else { return }
         titleLabel.text = text
+        textView.text = description
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {

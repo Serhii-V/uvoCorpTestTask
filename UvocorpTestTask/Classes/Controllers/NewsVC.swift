@@ -54,10 +54,8 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         if segmentedControl.selectedSegmentIndex == 0 {
             cell.textLabel?.text = news[indexPath.row].title
-            cell.detailTextLabel?.text = news[indexPath.row].itemDescription
         } else {
             cell.textLabel?.text = "Other news"
-            cell.detailTextLabel?.text = "Other news details"
         }
 
         return cell
@@ -66,9 +64,9 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "newsDetail", sender: nil)
         guard let news = currentNews else { return }
-        guard let title = news[indexPath.row].title, let link = news[indexPath.row].link  else { return }
+        guard let title = news[indexPath.row].title, let description = news[indexPath.row].itemDescription  else { return }
         Storage.addNewsTitle(news: title )
-        Storage.addNewsLink(news: link)
+        Storage.addNewsnewsDescription(news: description)
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

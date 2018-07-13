@@ -42,8 +42,4 @@ class UpdateManager {
 
         return strArray[0]
     }
-
-    func getFullNewsByLink(link: String) {
-
-    }
 }
