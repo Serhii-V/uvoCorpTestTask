@@ -14,7 +14,7 @@ class FullNewsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         guard let text = Storage.getNewsTitle() as? String else { return }
         titleLabel.text = text
     }

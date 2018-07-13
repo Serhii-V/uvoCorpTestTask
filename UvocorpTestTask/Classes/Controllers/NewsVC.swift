@@ -7,36 +7,68 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
 
+    let realm = try! Realm()
+    var currentNews: Results<NewsRLM>?
 
-    let arr = ["123", "321", "14241", "23@", "23234234", "234242342423", "123", "321", "14241", "23@", "23234234", "234242342423"]
-    let links = ["123", "321", "14241", "23@", "23234234", "234242342423", "123", "321", "14241", "23@", "23234234", "234242342423"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        prepare()
     }
 
+    func prepare() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        runTimer()
+    }
 
+    func runTimer() {
+        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateData), userInfo: nil, repeats: true)
+    }
+
+    @objc func updateData() {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            UpdateManager.updateBuisnessNews()
+            currentNews = realm.objects(NewsRLM.self).sorted(byKeyPath: "pubDate", ascending: false)
+        } else {
+            print("other news")
+        }
+        tableView.reloadData()
+    }
+
+    // MARK: - setup tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arr.count
+        guard let news = currentNews else { return 0 }
+        return news.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = arr[indexPath.row]
+        guard let news = currentNews else { return cell }
+
+        if segmentedControl.selectedSegmentIndex == 0 {
+            cell.textLabel?.text = news[indexPath.row].title
+            cell.detailTextLabel?.text = news[indexPath.row].itemDescription
+        } else {
+            cell.textLabel?.text = "Other news"
+            cell.detailTextLabel?.text = "Other news details"
+        }
+
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "newsDetail", sender: nil)
-        Storage.addNewsTitle(news: arr[indexPath.row])
-        Storage.addNewsTitle(news: links[indexPath.row])
+        guard let news = currentNews else { return }
+        guard let title = news[indexPath.row].title, let link = news[indexPath.row].link  else { return }
+        Storage.addNewsTitle(news: title )
+        Storage.addNewsLink(news: link)
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

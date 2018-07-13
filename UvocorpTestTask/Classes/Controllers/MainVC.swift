@@ -10,6 +10,7 @@ import UIKit
 
 class MainVC: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var recentlyReaded: UILabel!
     
     override func viewDidLoad() {
@@ -23,7 +24,7 @@ class MainVC: UIViewController {
     }
 
     func runTimer() {
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateDate), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
 
     func checkForNewsTitle() {
@@ -33,8 +34,16 @@ class MainVC: UIViewController {
         }
     }
 
-    @objc func updateDate() {
+    @objc func updateTime() {
         let newDate = DateFormatter.localizedString(from: Date(), dateStyle: DateFormatter.Style.medium, timeStyle: DateFormatter.Style.medium)
-        dateLabel.text = newDate
+        let strArr = newDate.components(separatedBy: "at ")
+        timeLabel.text = strArr[1]
+        if strArr[1] == "00:00:01" || dateLabel.text == "Date" {
+            updateDate(str: strArr[0])
+        }
+    }
+
+    func updateDate(str: String) {
+        dateLabel.text = str
     }
 }

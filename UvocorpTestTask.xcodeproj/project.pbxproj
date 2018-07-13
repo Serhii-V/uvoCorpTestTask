@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		074FE9C318444DC6C0C5A1F9 /* Pods_UvocorpTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0DC882DABA99FEAEDD6FF05 /* Pods_UvocorpTestTask.framework */; };
+		C502CC5620F79AED0048C5DC /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C502CC5520F79AED0048C5DC /* RealmSwift.framework */; };
+		C502CC5820F79AF20048C5DC /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C502CC5720F79AF20048C5DC /* Realm.framework */; };
+		C502CC5A20F79AF70048C5DC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C502CC5920F79AF70048C5DC /* Alamofire.framework */; };
+		C502CC5C20F79AFC0048C5DC /* AlamofireRSSParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C502CC5B20F79AFC0048C5DC /* AlamofireRSSParser.framework */; };
+		C502CC5E20F7A1F10048C5DC /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C502CC5D20F7A1F10048C5DC /* RSSParser.swift */; };
+		C502CC6220F88BD80048C5DC /* NewsRLM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C502CC6120F88BD80048C5DC /* NewsRLM.swift */; };
+		C502CC6420F88DE20048C5DC /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = C502CC6320F88DE20048C5DC /* News.swift */; };
+		C502CC6620F8B24D0048C5DC /* UpdateManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C502CC6520F8B24D0048C5DC /* UpdateManeger.swift */; };
 		C530307D20F6B0FF00731B64 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C530307C20F6B0FF00731B64 /* MainVC.swift */; };
 		C530307F20F6B12600731B64 /* NewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C530307E20F6B12600731B64 /* NewsVC.swift */; };
 		C530308120F6B1A500731B64 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C530308020F6B1A500731B64 /* GradientView.swift */; };
@@ -22,6 +30,14 @@
 /* Begin PBXFileReference section */
 		138D612707335E8566F3560A /* Pods-UvocorpTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UvocorpTestTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-UvocorpTestTask/Pods-UvocorpTestTask.release.xcconfig"; sourceTree = "<group>"; };
 		4886C5495033EAF45B98E159 /* Pods-UvocorpTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UvocorpTestTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UvocorpTestTask/Pods-UvocorpTestTask.debug.xcconfig"; sourceTree = "<group>"; };
+		C502CC5520F79AED0048C5DC /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C502CC5720F79AF20048C5DC /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C502CC5920F79AF70048C5DC /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C502CC5B20F79AFC0048C5DC /* AlamofireRSSParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireRSSParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C502CC5D20F7A1F10048C5DC /* RSSParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
+		C502CC6120F88BD80048C5DC /* NewsRLM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRLM.swift; sourceTree = "<group>"; };
+		C502CC6320F88DE20048C5DC /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		C502CC6520F8B24D0048C5DC /* UpdateManeger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateManeger.swift; sourceTree = "<group>"; };
 		C530307C20F6B0FF00731B64 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		C530307E20F6B12600731B64 /* NewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVC.swift; sourceTree = "<group>"; };
 		C530308020F6B1A500731B64 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -41,6 +57,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C502CC5C20F79AFC0048C5DC /* AlamofireRSSParser.framework in Frameworks */,
+				C502CC5A20F79AF70048C5DC /* Alamofire.framework in Frameworks */,
+				C502CC5820F79AF20048C5DC /* Realm.framework in Frameworks */,
+				C502CC5620F79AED0048C5DC /* RealmSwift.framework in Frameworks */,
 				074FE9C318444DC6C0C5A1F9 /* Pods_UvocorpTestTask.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +71,10 @@
 		2D964F67FF4316A31BAEF019 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C502CC5B20F79AFC0048C5DC /* AlamofireRSSParser.framework */,
+				C502CC5920F79AF70048C5DC /* Alamofire.framework */,
+				C502CC5720F79AF20048C5DC /* Realm.framework */,
+				C502CC5520F79AED0048C5DC /* RealmSwift.framework */,
 				D0DC882DABA99FEAEDD6FF05 /* Pods_UvocorpTestTask.framework */,
 			);
 			name = Frameworks;
@@ -114,6 +138,10 @@
 			isa = PBXGroup;
 			children = (
 				C530308220F6BEF000731B64 /* Storage.swift */,
+				C502CC6320F88DE20048C5DC /* News.swift */,
+				C502CC6120F88BD80048C5DC /* NewsRLM.swift */,
+				C502CC5D20F7A1F10048C5DC /* RSSParser.swift */,
+				C502CC6520F8B24D0048C5DC /* UpdateManeger.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -278,8 +306,12 @@
 				C530307D20F6B0FF00731B64 /* MainVC.swift in Sources */,
 				C5D4686020F6355600622202 /* AppDelegate.swift in Sources */,
 				C530308120F6B1A500731B64 /* GradientView.swift in Sources */,
+				C502CC6220F88BD80048C5DC /* NewsRLM.swift in Sources */,
 				C530307F20F6B12600731B64 /* NewsVC.swift in Sources */,
 				C530308320F6BEF000731B64 /* Storage.swift in Sources */,
+				C502CC6620F8B24D0048C5DC /* UpdateManeger.swift in Sources */,
+				C502CC6420F88DE20048C5DC /* News.swift in Sources */,
+				C502CC5E20F7A1F10048C5DC /* RSSParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +459,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9VM57AG273;
 				INFOPLIST_FILE = "$(SRCROOT)/UvocorpTestTask/Configs/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Serhii.Vovkotrub.UvocorpTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -443,7 +478,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9VM57AG273;
 				INFOPLIST_FILE = "$(SRCROOT)/UvocorpTestTask/Configs/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Serhii.Vovkotrub.UvocorpTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
