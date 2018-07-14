@@ -13,11 +13,18 @@ class News {
     var itemDescription: String?
     var link: String?
     var pubDate: Date?
+    var typeOfNews: String?
 
-    init(title: String, itemDescription: String?, link: String?, pubDate: Date? ) {
+    init(title: String, itemDescription: String?, link: String?, pubDate: Date?, type: String?) {
         self.title = title
         self.itemDescription = itemDescription
         self.link = link
         self.pubDate = pubDate
+        self.typeOfNews = type
+    }
+
+    class func newsRLMToNews(newsRLM: NewsRLM) -> News? {
+        guard let title = newsRLM.title else { return nil}
+        return News(title: title, itemDescription: newsRLM.itemDescription, link: newsRLM.link, pubDate: newsRLM.pubDate, type: newsRLM.typeOfNews)
     }
 }

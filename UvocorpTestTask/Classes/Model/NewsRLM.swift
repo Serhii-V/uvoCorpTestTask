@@ -9,12 +9,19 @@
 import Foundation
 import RealmSwift
 
+enum Type: String {
+    case business
+    case entertainment
+    case environment
+}
+
 
 class NewsRLM: Object {
     @objc dynamic var title: String?
     @objc dynamic var itemDescription: String?
     @objc dynamic var link: String?
     @objc dynamic var pubDate: Date?
+    @objc dynamic var typeOfNews: String = ""
 
     override static func primaryKey() -> String {
         return "title"
@@ -22,11 +29,13 @@ class NewsRLM: Object {
 
     convenience init(_ value: News) {
         self.init()
+        guard let type = value.typeOfNews  else { return }
 
         self.title = value.title
         self.itemDescription = value.itemDescription
         self.link = value.link
         self.pubDate = value.pubDate
+        self.typeOfNews = type
     }
 
     class func createInRealm(_ news: News) {
@@ -50,7 +59,7 @@ class NewsRLM: Object {
             var buffer = [News]()
             for newsRlm in results {
                 guard let title = newsRlm.title else { continue }
-                let news = News(title: title, itemDescription: newsRlm.itemDescription, link: newsRlm.link, pubDate: newsRlm.pubDate)
+                let news = News(title: title, itemDescription: newsRlm.itemDescription, link: newsRlm.link, pubDate: newsRlm.pubDate, type: newsRlm.typeOfNews)
                 buffer.append(news)
             }
             news = buffer
@@ -84,6 +93,35 @@ class NewsRLM: Object {
             newsRLM = nil
         }
         return newsRLM
+    }
+
+    class func removeNewsBy(_ type: String) {
+        do {
+            let realm = try Realm()
+            let allObjectsByType = realm.objects(NewsRLM.self).filter(type)
+            try! realm.write {
+                realm.delete(allObjectsByType)
+                print("Objects by type removed")
+            }
+        } catch {
+            print("can`t remove objects by type")
+        }
+    }
+
+    class func getArrayOfNewsBy(type: Type) -> [News] {
+        var array = [News]()
+        do {
+            let realm = try Realm()
+            print(type.rawValue)
+            let arrayRLM = realm.objects(NewsRLM.self).filter("typeOfNews == %@", type.rawValue).sorted(byKeyPath: "pubDate", ascending: false)
+            for item in arrayRLM {
+                guard let news = News.newsRLMToNews(newsRLM: item) else { continue }
+                array.append(news)
+            }
+        } catch {
+            print("can`t get realm data")
+        }
+        return array
     }
 
     class func removeAllObjects() {

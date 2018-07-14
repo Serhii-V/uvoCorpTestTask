@@ -15,7 +15,7 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
 
     let realm = try! Realm()
-    var currentNews: Results<NewsRLM>?
+    var currentNews: [News]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +34,14 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @objc func updateData() {
         if segmentedControl.selectedSegmentIndex == 0 {
-            UpdateManager.updateBuisnessNews()
-            currentNews = realm.objects(NewsRLM.self).sorted(byKeyPath: "pubDate", ascending: false)
+            UpdateManager.updateNews(type: .business)
+            currentNews = NewsRLM.getArrayOfNewsBy(type: .business)
         } else {
-            print("other news")
+            UpdateManager.updateNews(type: .entertainment)
+            UpdateManager.updateNews(type: .environment)
+            let entertaimentArray = NewsRLM.getArrayOfNewsBy(type: .entertainment)
+            let enviromentArray = NewsRLM.getArrayOfNewsBy(type: .environment)
+            currentNews = entertaimentArray + enviromentArray
         }
         tableView.reloadData()
     }
@@ -52,11 +56,7 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         guard let news = currentNews else { return cell }
 
-        if segmentedControl.selectedSegmentIndex == 0 {
-            cell.textLabel?.text = news[indexPath.row].title
-        } else {
-            cell.textLabel?.text = "Other news"
-        }
+        cell.textLabel?.text = news[indexPath.row].title
 
         return cell
     }
@@ -64,8 +64,8 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "newsDetail", sender: nil)
         guard let news = currentNews else { return }
-        guard let title = news[indexPath.row].title, let description = news[indexPath.row].itemDescription  else { return }
-        Storage.addNewsTitle(news: title )
+        guard let description = news[indexPath.row].itemDescription  else { return }
+        Storage.addNewsTitle(news: news[indexPath.row].title )
         Storage.addNewsnewsDescription(news: description)
     }
 

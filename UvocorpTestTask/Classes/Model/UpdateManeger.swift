@@ -10,29 +10,33 @@ import Foundation
 import RealmSwift
 
 class UpdateManager {
-    public static func updateBuisnessNews() {
-        let buisnessNewsLink = "http://feeds.reuters.com/reuters/businessNews"
+    public static func updateNews(type: Type) {
+        var link: String
 
-        RSSParser.getRSSFeedResponse(path: buisnessNewsLink) { (result, status) in
+        switch type {
+        case .business:
+            link = "http://feeds.reuters.com/reuters/businessNews"
+        case .entertainment:
+            link = "http://feeds.reuters.com/reuters/entertainment"
+        case .environment:
+            link = "http://feeds.reuters.com/reuters/environment"
+        }
+
+        RSSParser.getRSSFeedResponse(path: link) { (result, status) in
             guard let result = result else { return }
             guard let firstTitle = result.items[0].title else { return }
             if NewsRLM.getNewsByKey(by: firstTitle) == nil {
                 NewsRLM.removeAllObjects()
+                print(type.rawValue)
                 for item in result.items {
                     guard let itemTitle = item.title else { return }
                     let description = UpdateManager.seperateItemDescription(str: item.itemDescription)
-                    let news = News(title: itemTitle, itemDescription: description, link: item.link, pubDate: item.pubDate)
+                    let news = News(title: itemTitle, itemDescription: description, link: item.link, pubDate: item.pubDate, type: type.rawValue)
                     NewsRLM.createInRealm(news)
                 }
             }
 
         }
-    }
-
-    public static func updateOtherNews() {
-        let entertaimantNewsLink = "http://feeds.reuters.com/reuters/entertainment"
-        let enviromentNewsLink = "http://feeds.reuters.com/reuters/environment"
-
     }
 
     public static func seperateItemDescription(str: String?) -> String? {
