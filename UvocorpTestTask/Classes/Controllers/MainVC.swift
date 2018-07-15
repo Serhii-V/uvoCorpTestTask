@@ -22,14 +22,16 @@ class MainVC: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        nameLabel.animate(inputText: "Serhii", charDelay: 0.2)
+        nameLabel.animate(inputText: "Serhii", charDelay: 0.3)
         checkForNewsTitle()
     }
 
+    // timer for updateing clock label every seconds
     func runTimer() {
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
 
+    // show title of news if it present
     func checkForNewsTitle() {
         if !Storage.isNewsTitlePresent() {
             guard let title = Storage.getNewsTitle() as? String else { return }
@@ -37,17 +39,20 @@ class MainVC: UIViewController {
         }
     }
 
+    // get current time and show it
     @objc func updateTime() {
         let newDate = DateFormatter.localizedString(from: Date(), dateStyle: DateFormatter.Style.medium, timeStyle: DateFormatter.Style.medium)
         let strArr = newDate.components(separatedBy: "at ")
         timeLabel.text = strArr[1]
         timeLabel.makeOutLine(oulineColor: .darkGray, foregroundColor: .lightGray)
+        //change date only once per day
         if strArr[1] == "00:00:01" || dateLabel.text == "Date" {
             updateDate(str: strArr[0])
         }
     }
 
+    // change date
     func updateDate(str: String) {
-        dateLabel.text = str
+       dateLabel.text = str
     }
 }

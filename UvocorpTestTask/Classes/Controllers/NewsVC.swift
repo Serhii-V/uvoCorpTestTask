@@ -20,40 +20,22 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepare()
-    }
-
-    func prepare() {
         tableView.delegate = self
         tableView.dataSource = self
         updateData()
     }
 
-    func startTimer () {
-        if timer == nil {
-            timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateData), userInfo: nil, repeats: true)
-        }
-    }
-
-    func stopTimer() {
-        if timer != nil {
-            timer?.invalidate()
-            timer = nil
-        }
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         startTimer()
-        print("viewWillAppear")
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         stopTimer()
-        print("didDisapear")
     }
 
+    // MARK: - get data methods
     @objc func updateData() {
          LoaderController.sharedInstance.showLoader()
         if segmentedControl.selectedSegmentIndex == 0 {
@@ -71,19 +53,7 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
 
-//    func updateOtherNews() {
-//        LoaderController.sharedInstance.showLoader()
-//        UpdateManager.updateNews(type: .entertainment)
-//        UpdateManager.updateNews(type: .environment)
-//        let entertaimentArray = NewsRLM.getArrayOfNewsBy(type: .entertainment)
-//        let enviromentArray = NewsRLM.getArrayOfNewsBy(type: .environment)
-//        currentNews = entertaimentArray + enviromentArray
-//        tableView.reloadData()
-//        LoaderController.sharedInstance.removeLoader()
-//    }
-
     func updateOtherNews() {
-        LoaderController.sharedInstance.showLoader()
         let group = DispatchGroup()
         DispatchQueue.global().async(group: group, execute: {
              UpdateManager.updateNews(type: .entertainment)
@@ -101,7 +71,6 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             LoaderController.sharedInstance.removeLoader()
         }
     }
-
 
     // MARK: - setup tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -130,6 +99,19 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.cellForRow(at: indexPath)?.textLabel?.textColor = UIColor.black
     }
 
+    // MARK: - timer methods
+    func startTimer () {
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateData), userInfo: nil, repeats: true)
+        }
+    }
+
+    func stopTimer() {
+        if timer != nil {
+            timer?.invalidate()
+            timer = nil
+        }
+    }
 
     @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
         updateData()

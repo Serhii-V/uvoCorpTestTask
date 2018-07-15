@@ -23,7 +23,7 @@
 		C530308520F74E5200731B64 /* FullNewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C530308420F74E5200731B64 /* FullNewsVC.swift */; };
 		C576F67D20FA39F20033DE56 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C576F67C20FA39F20033DE56 /* ActivityIndicator.swift */; };
 		C576F67F20FB285A0033DE56 /* UILabel+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C576F67E20FB285A0033DE56 /* UILabel+Animation.swift */; };
-		C576F68120FB2F790033DE56 /* UILabel+OutlineText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C576F68020FB2F790033DE56 /* UILabel+OutlineText.swift */; };
+		C576F68120FB2F790033DE56 /* UILabel+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C576F68020FB2F790033DE56 /* UILabel+Color.swift */; };
 		C5D4686020F6355600622202 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D4685F20F6355600622202 /* AppDelegate.swift */; };
 		C5D4686720F6355600622202 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5D4686520F6355600622202 /* Main.storyboard */; };
 		C5D4686920F6355800622202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5D4686820F6355800622202 /* Assets.xcassets */; };
@@ -48,7 +48,7 @@
 		C530308420F74E5200731B64 /* FullNewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNewsVC.swift; sourceTree = "<group>"; };
 		C576F67C20FA39F20033DE56 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		C576F67E20FB285A0033DE56 /* UILabel+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Animation.swift"; sourceTree = "<group>"; };
-		C576F68020FB2F790033DE56 /* UILabel+OutlineText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+OutlineText.swift"; sourceTree = "<group>"; };
+		C576F68020FB2F790033DE56 /* UILabel+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Color.swift"; sourceTree = "<group>"; };
 		C5D4685C20F6355600622202 /* UvocorpTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UvocorpTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5D4685F20F6355600622202 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5D4686620F6355600622202 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				C576F67E20FB285A0033DE56 /* UILabel+Animation.swift */,
-				C576F68020FB2F790033DE56 /* UILabel+OutlineText.swift */,
+				C576F68020FB2F790033DE56 /* UILabel+Color.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -299,7 +299,6 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireRSSParser/AlamofireRSSParser.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -307,7 +306,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireRSSParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -324,7 +322,7 @@
 				C530308520F74E5200731B64 /* FullNewsVC.swift in Sources */,
 				C530307D20F6B0FF00731B64 /* MainVC.swift in Sources */,
 				C5D4686020F6355600622202 /* AppDelegate.swift in Sources */,
-				C576F68120FB2F790033DE56 /* UILabel+OutlineText.swift in Sources */,
+				C576F68120FB2F790033DE56 /* UILabel+Color.swift in Sources */,
 				C576F67F20FB285A0033DE56 /* UILabel+Animation.swift in Sources */,
 				C530308120F6B1A500731B64 /* GradientView.swift in Sources */,
 				C502CC6220F88BD80048C5DC /* NewsRLM.swift in Sources */,

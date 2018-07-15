@@ -200,10 +200,10 @@
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvm-8D-a3j">
-                                <rect key="frame" x="20" y="40" width="30" height="30"/>
+                                <rect key="frame" x="10" y="30" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="BWP-La-nRf"/>
-                                    <constraint firstAttribute="width" constant="30" id="lnk-28-2UJ"/>
+                                    <constraint firstAttribute="height" constant="40" id="BWP-La-nRf"/>
+                                    <constraint firstAttribute="width" constant="40" id="lnk-28-2UJ"/>
                                 </constraints>
                                 <state key="normal" image="back_filled">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -219,12 +219,12 @@
                             <constraint firstItem="m1I-hZ-1Bj" firstAttribute="trailing" secondItem="gsB-UN-gZc" secondAttribute="trailing" id="GaP-UJ-j0i"/>
                             <constraint firstItem="m1I-hZ-1Bj" firstAttribute="bottom" secondItem="gsB-UN-gZc" secondAttribute="bottom" id="Kad-u1-2Es"/>
                             <constraint firstItem="gsB-UN-gZc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LoG-Vz-qD4" secondAttribute="trailing" constant="30" id="PjN-43-BTJ"/>
-                            <constraint firstItem="jvm-8D-a3j" firstAttribute="leading" secondItem="gsB-UN-gZc" secondAttribute="leading" constant="20" id="Q3w-te-gbU"/>
+                            <constraint firstItem="jvm-8D-a3j" firstAttribute="leading" secondItem="gsB-UN-gZc" secondAttribute="leading" constant="10" id="Q3w-te-gbU"/>
                             <constraint firstItem="m1I-hZ-1Bj" firstAttribute="top" secondItem="LoG-Vz-qD4" secondAttribute="bottom" constant="50" id="Z2Y-4B-87A"/>
                             <constraint firstItem="m1I-hZ-1Bj" firstAttribute="leading" secondItem="gsB-UN-gZc" secondAttribute="leading" id="qpy-DF-Wra"/>
                             <constraint firstItem="LoG-Vz-qD4" firstAttribute="top" secondItem="gsB-UN-gZc" secondAttribute="top" constant="100" id="sIz-Bp-JTm"/>
                             <constraint firstItem="LoG-Vz-qD4" firstAttribute="centerX" secondItem="gsB-UN-gZc" secondAttribute="centerX" id="sP9-6p-FKE"/>
-                            <constraint firstItem="jvm-8D-a3j" firstAttribute="top" secondItem="gsB-UN-gZc" secondAttribute="top" constant="20" id="uQT-Ec-XYs"/>
+                            <constraint firstItem="jvm-8D-a3j" firstAttribute="top" secondItem="gsB-UN-gZc" secondAttribute="top" constant="10" id="uQT-Ec-XYs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gsB-UN-gZc"/>
                         <userDefinedRuntimeAttributes>

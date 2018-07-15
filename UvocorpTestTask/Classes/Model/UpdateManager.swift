@@ -24,15 +24,13 @@ class UpdateManager {
 
         RSSParser.getRSSFeedResponse(path: link) { (result, status) in
             guard let result = result else { return }
-                NewsRLM.removeNewsBy(type)
-                print(type.rawValue)
-                for item in result.items {
-                    guard let itemTitle = item.title else { return }
-                    let description = UpdateManager.seperateItemDescription(str: item.itemDescription)
-                    let news = News(title: itemTitle, itemDescription: description, link: item.link, pubDate: item.pubDate, type: type.rawValue)
-                    NewsRLM.createInRealm(news)
-                    print("item added")
-                }
+            NewsRLM.removeNewsBy(type)
+            for item in result.items {
+                guard let itemTitle = item.title else { return }
+                let description = UpdateManager.seperateItemDescription(str: item.itemDescription)
+                let news = News(title: itemTitle, itemDescription: description, link: item.link, pubDate: item.pubDate, type: type.rawValue)
+                NewsRLM.createInRealm(news)
+            }
         }
     }
 
@@ -53,13 +51,11 @@ class UpdateManager {
             guard let firstTitle = result.items[0].title else { return }
             if NewsRLM.getNewsByKey(by: firstTitle) == nil {
                 NewsRLM.removeNewsBy(type)
-                print(type.rawValue)
                 for item in result.items {
                     guard let itemTitle = item.title else { return }
                     let description = UpdateManager.seperateItemDescription(str: item.itemDescription)
                     let news = News(title: itemTitle, itemDescription: description, link: item.link, pubDate: item.pubDate, type: type.rawValue)
                     NewsRLM.createInRealm(news)
-                    print("item added")
                 }
             }
             completion()
@@ -68,7 +64,6 @@ class UpdateManager {
 
     public static func seperateItemDescription(str: String?) -> String? {
         guard let str = str else { return nil }
-
         let strArray = str.components(separatedBy: "<div")
 
         return strArray[0]

@@ -101,7 +101,6 @@ class NewsRLM: Object {
             let allObjectsByType = realm.objects(NewsRLM.self).filter("typeOfNews == %@", type.rawValue)
             try! realm.write {
                 realm.delete(allObjectsByType)
-                print("Objects by type removed")
             }
         } catch {
             print("can`t remove objects by type")
@@ -112,7 +111,6 @@ class NewsRLM: Object {
         var array = [News]()
         do {
             let realm = try Realm()
-            print(type.rawValue)
             let arrayRLM = realm.objects(NewsRLM.self).filter("typeOfNews == %@", type.rawValue).sorted(byKeyPath: "pubDate", ascending: false)
             for item in arrayRLM {
                 guard let news = News.newsRLMToNews(newsRLM: item) else { continue }
