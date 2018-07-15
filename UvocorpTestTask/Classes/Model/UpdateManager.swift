@@ -24,18 +24,45 @@ class UpdateManager {
 
         RSSParser.getRSSFeedResponse(path: link) { (result, status) in
             guard let result = result else { return }
-            guard let firstTitle = result.items[0].title else { return }
-            if NewsRLM.getNewsByKey(by: firstTitle) == nil {
-                NewsRLM.removeAllObjects()
+                NewsRLM.removeNewsBy(type)
                 print(type.rawValue)
                 for item in result.items {
                     guard let itemTitle = item.title else { return }
                     let description = UpdateManager.seperateItemDescription(str: item.itemDescription)
                     let news = News(title: itemTitle, itemDescription: description, link: item.link, pubDate: item.pubDate, type: type.rawValue)
                     NewsRLM.createInRealm(news)
+                    print("item added")
+                }
+        }
+    }
+
+    public static func getNews(type: Type, completion: @escaping ()->()) {
+        var link: String
+
+        switch type {
+        case .business:
+            link = "http://feeds.reuters.com/reuters/businessNews"
+        case .entertainment:
+            link = "http://feeds.reuters.com/reuters/entertainment"
+        case .environment:
+            link = "http://feeds.reuters.com/reuters/environment"
+        }
+
+        RSSParser.getRSSFeedResponse(path: link) { (result, status) in
+            guard let result = result else { return }
+            guard let firstTitle = result.items[0].title else { return }
+            if NewsRLM.getNewsByKey(by: firstTitle) == nil {
+                NewsRLM.removeNewsBy(type)
+                print(type.rawValue)
+                for item in result.items {
+                    guard let itemTitle = item.title else { return }
+                    let description = UpdateManager.seperateItemDescription(str: item.itemDescription)
+                    let news = News(title: itemTitle, itemDescription: description, link: item.link, pubDate: item.pubDate, type: type.rawValue)
+                    NewsRLM.createInRealm(news)
+                    print("item added")
                 }
             }
-
+            completion()
         }
     }
 

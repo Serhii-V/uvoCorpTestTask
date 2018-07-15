@@ -12,19 +12,22 @@ class MainVC: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var recentlyReaded: UILabel!
-    
+    @IBOutlet weak var nameLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateTime()
         runTimer()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        nameLabel.animate(inputText: "Serhii", charDelay: 0.2)
         checkForNewsTitle()
     }
 
     func runTimer() {
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
 
     func checkForNewsTitle() {
@@ -38,6 +41,7 @@ class MainVC: UIViewController {
         let newDate = DateFormatter.localizedString(from: Date(), dateStyle: DateFormatter.Style.medium, timeStyle: DateFormatter.Style.medium)
         let strArr = newDate.components(separatedBy: "at ")
         timeLabel.text = strArr[1]
+        timeLabel.makeOutLine(oulineColor: .darkGray, foregroundColor: .lightGray)
         if strArr[1] == "00:00:01" || dateLabel.text == "Date" {
             updateDate(str: strArr[0])
         }

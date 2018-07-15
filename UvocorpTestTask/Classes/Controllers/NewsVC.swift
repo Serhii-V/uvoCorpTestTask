@@ -16,6 +16,7 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let realm = try! Realm()
     var currentNews: [News]?
+    var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,26 +26,82 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func prepare() {
         tableView.delegate = self
         tableView.dataSource = self
-        runTimer()
+        updateData()
     }
 
-    func runTimer() {
-        Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateData), userInfo: nil, repeats: true)
+    func startTimer () {
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(updateData), userInfo: nil, repeats: true)
+        }
+    }
+
+    func stopTimer() {
+        if timer != nil {
+            timer?.invalidate()
+            timer = nil
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        startTimer()
+        print("viewWillAppear")
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopTimer()
+        print("didDisapear")
     }
 
     @objc func updateData() {
+         LoaderController.sharedInstance.showLoader()
         if segmentedControl.selectedSegmentIndex == 0 {
-            UpdateManager.updateNews(type: .business)
-            currentNews = NewsRLM.getArrayOfNewsBy(type: .business)
+            updateBuisnessNews()
         } else {
-            UpdateManager.updateNews(type: .entertainment)
+            updateOtherNews()
+        }
+    }
+
+    func updateBuisnessNews() {
+        UpdateManager.getNews(type: .business) {
+            self.currentNews = NewsRLM.getArrayOfNewsBy(type: .business)
+            self.tableView.reloadData()
+            LoaderController.sharedInstance.removeLoader()
+        }
+    }
+
+//    func updateOtherNews() {
+//        LoaderController.sharedInstance.showLoader()
+//        UpdateManager.updateNews(type: .entertainment)
+//        UpdateManager.updateNews(type: .environment)
+//        let entertaimentArray = NewsRLM.getArrayOfNewsBy(type: .entertainment)
+//        let enviromentArray = NewsRLM.getArrayOfNewsBy(type: .environment)
+//        currentNews = entertaimentArray + enviromentArray
+//        tableView.reloadData()
+//        LoaderController.sharedInstance.removeLoader()
+//    }
+
+    func updateOtherNews() {
+        LoaderController.sharedInstance.showLoader()
+        let group = DispatchGroup()
+        DispatchQueue.global().async(group: group, execute: {
+             UpdateManager.updateNews(type: .entertainment)
+        })
+
+        DispatchQueue.global().async(group: group, execute: {
             UpdateManager.updateNews(type: .environment)
+        })
+
+        group.notify(queue: DispatchQueue.main) {
             let entertaimentArray = NewsRLM.getArrayOfNewsBy(type: .entertainment)
             let enviromentArray = NewsRLM.getArrayOfNewsBy(type: .environment)
-            currentNews = entertaimentArray + enviromentArray
+            self.currentNews = entertaimentArray + enviromentArray
+            self.tableView.reloadData()
+            LoaderController.sharedInstance.removeLoader()
         }
-        tableView.reloadData()
     }
+
 
     // MARK: - setup tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,6 +132,7 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 
     @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
+        updateData()
         tableView.reloadData()
     }
 }

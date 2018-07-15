@@ -95,10 +95,10 @@ class NewsRLM: Object {
         return newsRLM
     }
 
-    class func removeNewsBy(_ type: String) {
+    class func removeNewsBy(_ type: Type) {
         do {
             let realm = try Realm()
-            let allObjectsByType = realm.objects(NewsRLM.self).filter(type)
+            let allObjectsByType = realm.objects(NewsRLM.self).filter("typeOfNews == %@", type.rawValue)
             try! realm.write {
                 realm.delete(allObjectsByType)
                 print("Objects by type removed")

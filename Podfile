@@ -8,6 +8,7 @@ target 'UvocorpTestTask' do
 	pod 'Alamofire', '~> 4.7'
 	pod 'AlamofireRSSParser'
 	pod 'RealmSwift'
+	pod 'SnapKit', '~> 4.0.0'
 
 end
 
