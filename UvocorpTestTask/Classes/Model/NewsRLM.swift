@@ -24,7 +24,7 @@ class NewsRLM: Object {
     @objc dynamic var typeOfNews: String = ""
 
     override static func primaryKey() -> String {
-        return "title"
+        return "link"
     }
 
     convenience init(_ value: News) {
@@ -38,7 +38,7 @@ class NewsRLM: Object {
         self.typeOfNews = type
     }
 
-    class func createInRealm(_ news: News) {
+    static func createInRealm(_ news: News) {
         do {
             let realm = try Realm()
             let newsRLM = NewsRLM(news)
@@ -50,7 +50,7 @@ class NewsRLM: Object {
         }
     }
 
-    class func getNews() -> [News]? {
+    static func getNews() -> [News]? {
         let news: [News]?
         do {
             let realm = try Realm()
@@ -69,7 +69,7 @@ class NewsRLM: Object {
         return news
     }
 
-    class func getNews(by title: String) -> NewsRLM? {
+    static func getNews(by title: String) -> NewsRLM? {
         let condition = NSPredicate(format: "identifier == %@", title)
         let newsRLM: NewsRLM?
 
@@ -83,7 +83,7 @@ class NewsRLM: Object {
         return newsRLM
     }
 
-    class func getNewsByKey(by key: String) -> NewsRLM? {
+    static func getNewsByKey(by key: String) -> NewsRLM? {
         let newsRLM: NewsRLM?
 
         do {
@@ -95,7 +95,7 @@ class NewsRLM: Object {
         return newsRLM
     }
 
-    class func removeNewsBy(_ type: Type) {
+    static func removeNewsBy(_ type: Type) {
         do {
             let realm = try Realm()
             let allObjectsByType = realm.objects(NewsRLM.self).filter("typeOfNews == %@", type.rawValue)
@@ -107,7 +107,7 @@ class NewsRLM: Object {
         }
     }
 
-    class func getArrayOfNewsBy(type: Type) -> [News] {
+    static func getArrayOfNewsBy(type: Type) -> [News] {
         var array = [News]()
         do {
             let realm = try Realm()
@@ -122,7 +122,7 @@ class NewsRLM: Object {
         return array
     }
 
-    class func removeAllObjects() {
+    static func removeAllObjects() {
         do {
             let realm = try Realm()
             let allUploadingNews = realm.objects(NewsRLM.self)

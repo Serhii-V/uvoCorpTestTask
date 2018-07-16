@@ -26,7 +26,7 @@ class MainVC: UIViewController {
         checkForNewsTitle()
     }
 
-    // timer for updateing clock label every seconds
+    // Timer that updates clock label every second
     func runTimer() {
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
@@ -41,17 +41,15 @@ class MainVC: UIViewController {
 
     // get current time and show it
     @objc func updateTime() {
-        let newDate = DateFormatter.localizedString(from: Date(), dateStyle: DateFormatter.Style.medium, timeStyle: DateFormatter.Style.medium)
-        let strArr = newDate.components(separatedBy: "at ")
+        let dateString = Date().getCurrentDate()
+        let strArr = dateString.components(separatedBy: "at ")
         timeLabel.text = strArr[1]
         timeLabel.makeOutLine(oulineColor: .darkGray, foregroundColor: .lightGray)
-        //change date only once per day
         if strArr[1] == "00:00:01" || dateLabel.text == "Date" {
             updateDate(str: strArr[0])
         }
     }
 
-    // change date
     func updateDate(str: String) {
        dateLabel.text = str
     }

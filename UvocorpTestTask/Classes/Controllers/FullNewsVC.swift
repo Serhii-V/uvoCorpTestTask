@@ -12,13 +12,14 @@ class FullNewsVC: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
 
+    var news: News?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
-        guard let text = Storage.getNewsTitle() as? String else { return }
-        guard let description = Storage.getNewsDescription() as? String else { return }
-        titleLabel.text = text
-        textView.text = description
+        guard let currentNews = news else { return }
+        titleLabel.text = currentNews.title
+        textView.text = currentNews.itemDescription
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {

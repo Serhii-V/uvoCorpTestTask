@@ -8,8 +8,8 @@
 
 import Foundation
 
-class News: Equatable {
 
+class News {
     var title: String
     var itemDescription: String?
     var link: String?
@@ -24,15 +24,8 @@ class News: Equatable {
         self.typeOfNews = type
     }
 
-    class func newsRLMToNews(newsRLM: NewsRLM) -> News? {
+    static func newsRLMToNews(newsRLM: NewsRLM) -> News? {
         guard let title = newsRLM.title else { return nil}
         return News(title: title, itemDescription: newsRLM.itemDescription, link: newsRLM.link, pubDate: newsRLM.pubDate, type: newsRLM.typeOfNews)
-    }
-
-    static func == (lhs: News, rhs: News) -> Bool {
-        if lhs.title == rhs.title, lhs.typeOfNews == rhs.typeOfNews {
-            return true
-        }
-        return false
     }
 }

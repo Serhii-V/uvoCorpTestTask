@@ -7,26 +7,29 @@
 //
 
 import UIKit
-import RealmSwift
+
 
 
 class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
 
-    let realm = try! Realm()
-    var currentNews: [News]?
-    var timer: Timer?
+    private var currentNews: [News]?
+    private var timer: Timer?
+    private var selectedNews: News?
+    private var spinner = Spinner()
+    private let group = DispatchGroup()
+    private var entertaimentArray: [News] = []
+    private var enviromentArray: [News] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
         updateData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateData()
         startTimer()
     }
 
@@ -37,7 +40,7 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - get data methods
     @objc func updateData() {
-         LoaderController.sharedInstance.showLoader()
+        spinner.start()
         if segmentedControl.selectedSegmentIndex == 0 {
             updateBuisnessNews()
         } else {
@@ -49,26 +52,33 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         UpdateManager.getNews(type: .business) {
             self.currentNews = NewsRLM.getArrayOfNewsBy(type: .business)
             self.tableView.reloadData()
-            LoaderController.sharedInstance.removeLoader()
+            self.spinner.stop()
         }
     }
 
     func updateOtherNews() {
-        let group = DispatchGroup()
-        DispatchQueue.global().async(group: group, execute: {
-             UpdateManager.updateNews(type: .entertainment)
-        })
-
-        DispatchQueue.global().async(group: group, execute: {
-            UpdateManager.updateNews(type: .environment)
-        })
-
-        group.notify(queue: DispatchQueue.main) {
-            let entertaimentArray = NewsRLM.getArrayOfNewsBy(type: .entertainment)
-            let enviromentArray = NewsRLM.getArrayOfNewsBy(type: .environment)
-            self.currentNews = entertaimentArray + enviromentArray
+        getEntertaimentNews()
+        getEnviromentNews()
+        group.notify(queue: .main) {
+            self.currentNews = self.entertaimentArray + self.enviromentArray
             self.tableView.reloadData()
-            LoaderController.sharedInstance.removeLoader()
+            self.spinner.stop()
+        }
+    }
+
+    func getEntertaimentNews() {
+        group.enter()
+        UpdateManager.getNews(type: .entertainment) {
+            self.self.entertaimentArray = NewsRLM.getArrayOfNewsBy(type: .entertainment)
+            self.group.leave()
+        }
+    }
+
+    func getEnviromentNews() {
+        group.enter()
+        UpdateManager.getNews(type: .environment) {
+            self.enviromentArray = NewsRLM.getArrayOfNewsBy(type: .environment)
+            self.group.leave()
         }
     }
 
@@ -81,22 +91,23 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         guard let news = currentNews else { return cell }
-
         cell.textLabel?.text = news[indexPath.row].title
-
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "newsDetail", sender: nil)
         guard let news = currentNews else { return }
-        guard let description = news[indexPath.row].itemDescription  else { return }
-        Storage.addNewsTitle(news: news[indexPath.row].title )
-        Storage.addNewsnewsDescription(news: description)
+        selectedNews = news[indexPath.row]
+        Storage.addNewsTitle(news: news[indexPath.row].title)
+        performSegue(withIdentifier: "newsDetail", sender: nil)
     }
 
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.textLabel?.textColor = UIColor.black
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newsDetail" {
+            if let nextVC = segue.destination as? FullNewsVC {
+                nextVC.news = selectedNews
+            }
+        }
     }
 
     // MARK: - timer methods
@@ -115,6 +126,5 @@ class NewsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
         updateData()
-        tableView.reloadData()
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class UpdateManager {
-    public static func updateNews(type: Type) {
+    static func updateNews(type: Type) {
         var link: String
 
         switch type {
@@ -34,7 +34,7 @@ class UpdateManager {
         }
     }
 
-    public static func getNews(type: Type, completion: @escaping ()->()) {
+    static func getNews(type: Type, completion: @escaping ()->()) {
         var link: String
 
         switch type {
@@ -62,7 +62,7 @@ class UpdateManager {
         }
     }
 
-    public static func seperateItemDescription(str: String?) -> String? {
+    static func seperateItemDescription(str: String?) -> String? {
         guard let str = str else { return nil }
         let strArray = str.components(separatedBy: "<div")
 
